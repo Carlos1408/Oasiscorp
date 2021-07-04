@@ -1,5 +1,5 @@
 from django.db import models
-from kokocorp.user.models.user import User
+from user.models.user import User
 
 class Order(models.Model):
     date = models.DateField(auto_now=True)

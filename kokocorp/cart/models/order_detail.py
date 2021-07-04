@@ -1,6 +1,6 @@
 from django.db import models
 from .order import Order
-from kokocorp.catalogue.models.product import Product
+from catalogue.models.product import Product
 
 class Order_detail(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cart',
-    'catalogue',
     'user',
+    'catalogue',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'kokocorp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kokocorp',
+        'USER' : 'postgres',
+        'PASSWORD' : 'peonmas123',
+        'HOST' : 'localhost',
+        'DATABASE_PORT' : '5432'
     }
 }
 
