@@ -10,7 +10,7 @@ def login(request):
 def logout(request):
     return HttpResponse('logout')
 
-def my_profile(request):
+def user(request):
     return HttpResponse('my profile')
 
 def history(request):

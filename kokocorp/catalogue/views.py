@@ -4,11 +4,11 @@ from django.shortcuts import render, HttpResponse
 def home(request):
     return HttpResponse('home')
 
-def view_all(request):
+def products(request):
     return HttpResponse('view all')
 
-def view_category(request):
+def category(request):
     return HttpResponse('category')
 
-def view_product(request):
+def product(request):
     return HttpResponse('product')

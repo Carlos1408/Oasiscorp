@@ -9,7 +9,7 @@ class Product(models.Model):
     stock = models.IntegerField()
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     description = models.TextField(max_length=500)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='product')
     features = models.JSONField()
 
     def __str__(self):
