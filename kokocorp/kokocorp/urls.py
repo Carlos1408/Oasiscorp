@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    path('', include('catalogue.urls')),
+    path('', include('kokocorp_main.urls')),
+    path('catalogue/', include('catalogue.urls')),
     path('cart/', include('cart.urls')),
     path('user/', include('user.urls')),
 ]
