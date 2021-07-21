@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- TARJETA DE PRODUCTO -->
+<section class="container py-3">
+    <div class="row align-items-start">
+        {%for product in products %}
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 py-2">
+            <div class="card text-center bg-light">
+                <a href="{% url 'product' product.id %}" style="height: 300px; width: 300px;">
+                    <img class="card-img-top img-thumbnail" height="250" width="100%" src="{{product.image.url}}"
+                        alt="Imagen de {{product.name}}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-tittle" style="height: 50px;">{{product.name}}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-light">{{product.unit_price}} $</li>
+                        <li class="list-group-item bg-light">
+                            <a href="{% url 'add' product.id %}" class="btn btn-warning">
+                                    <i class="fas fa-cart-plus"></i>
+                                    Agregar al carrito
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

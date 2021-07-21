@@ -5,8 +5,8 @@ from .views import confirm
 from .views import cart
 
 urlpatterns = [
-    path('', cart),
-    path('add/', add),
-    path('remove/', remove),
-    path('confirm/', confirm),
+    path('', cart, name='cart'),
+    path('add/<int:id_product>', add, name='add'),
+    path('remove/<id_product>', remove, name='remove'),
+    path('confirm/', confirm, name='confirm'),
 ]

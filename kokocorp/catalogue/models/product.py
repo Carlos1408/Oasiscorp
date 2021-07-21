@@ -7,10 +7,10 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     unit_price = models.FloatField()
     stock = models.IntegerField()
-    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    description = models.TextField(max_length=500)
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, blank = True)
+    description = models.TextField(max_length=1000)
     image = models.ImageField(upload_to='product')
-    features = models.JSONField()
+    features = models.TextField(max_length=250)
 
     def __str__(self):
         return f"{self.name}"

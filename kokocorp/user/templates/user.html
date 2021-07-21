@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+<section class="container pt-4">
+    <div class="col-12 col-lg-8 offset-lg-2">
+        <div class="card bg-light">
+            <div class="card-tittle d-flex justify-content-center">
+                <h3>Mi cuenta</h3>
+            </div>
+            <div class="card-body" action="home.html">
+                <div class="form-group">
+                    <label class="form-label" for="nombre">Nombre</label>
+                    <input class="form-control" value="{{user.first_name}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="nombre">Apellido</label>
+                    <input class="form-control" value="{{user.last_name}}" readonly>
+                </div>
+                <div class="form-group pt-1">
+                    <label class="form-label" for="nombre">Fecha de nacimiento</label>
+                    <input class="form-control" type="date" value="{{user.birth_date|date:'Y-m-d'}}"
+                        readonly>
+                </div>
+                <div class="form-group pt-1">
+                    <label class="form-label" for="telefono">Telefono</label>
+                    <input class="form-control" value="{{user.phone}}" readonly>
+                </div>
+                <div class="form-group pt-1">
+                    <label class="form-label" for="direccion">Direccion</label>
+                    <input class="form-control" value="{{user.address}}" readonly>
+                </div>
+                <div class="form-group pt-1">
+                    <label class="form-label" for="correo">Correo electronico</label>
+                    <input class="form-control" value="{{user.email}}" readonly>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

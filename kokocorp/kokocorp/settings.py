@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'kokocorp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kokocorp',
+        'NAME': 'kokocorp2',
         'USER' : 'postgres',
         'PASSWORD' : 'peonmas123',
         'HOST' : 'localhost',
@@ -106,6 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'user.User'
 
 
 # Internationalization
