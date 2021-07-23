@@ -2,15 +2,12 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models.user import User
 from cart.models.order import Order
 from cart.models.order_detail import Order_detail
-from catalogue.models.category import Category
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.contrib import messages
 
 # Create your views here.
 def signup(request):
-    context = {
-            'categories' : Category.objects.all()
-            }
     if request.method == 'GET':
         return render(request, 'signup.html', context)
 
@@ -39,36 +36,26 @@ def login(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             auth_login(request, user)
-            print('LOGUEADO')
+            messages.success(request, 'Sesion iniciada')
         else:
-            print('NO LOGUEADO')
+            messages.warning(request, 'Error al iniciar sesion')
     return redirect(prev_url)
 
 def logout(request):
     auth_logout(request)
+    messages.success(request, 'Sesion cerrada')
     return redirect('home')
 
 def profile(request):
-    context = {
-            'categories' : Category.objects.all(),
-            'user' : request.user
-            }
+    context = { 'user' : request.user }
     return render(request, 'user.html', context)
 
 def history(request):
     orders = Order.objects.filter(user = request.user.id)
-    print(orders)
-    context = {
-            'categories' : Category.objects.all(),
-            'orders' : orders
-            }
+    context = { 'orders' : orders }
     return render(request, 'history_cart.html', context)
 
 def history_detail(request, id_order):
    order_details = Order_detail.objects.filter(order = id_order)
-   print(order_details)
-   context = {
-           'categories' : Category.objects.all(),
-           'order_details' : order_details
-           }
+   context = { 'order_details' : order_details }
    return render(request, 'history_detail.html', context)
