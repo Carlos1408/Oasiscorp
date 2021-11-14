@@ -6,7 +6,6 @@ class Cart():
 
     def __init__(self, request):
         self.session = request.session
-        print(self.session)
         try:
             self.cart = self.session['cart']
         except:
@@ -16,6 +15,14 @@ class Cart():
             self.total = self.session['total']
         except:
             self.total = 0
+
+    def __str__(self):
+        table = list()
+        for product in self.cart.values():
+            row = f"{product['name']}\tx{product['quantity']}\t{product['unit_price']}$\t{product['subtotal']}$"
+            table.append(row)
+        table.append(f"Total: {self.total}$")
+        return '\n'.join(table)
     
     def addProduct(self, product, quantity=1):
         try:

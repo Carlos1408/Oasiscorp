@@ -1,0 +1,29 @@
+<table>
+    <thead>
+        <tr>
+            <td>
+                <h3>Producto</h3>
+            </td>
+            <td>
+                <h3>Cantidad</h3>
+            </td>
+            <td>
+                <h3>Precio unitario</h3>
+            </td>
+            <td>
+                <h3>Subtotal</h3>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in cart.values %}
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.unit_price}}$</td>
+            <td>{{product.subtotal}}$</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h2>Total: {{total}}$</h3>

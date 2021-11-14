@@ -9,7 +9,7 @@ from django.contrib import messages
 # Create your views here.
 def signup(request):
     if request.method == 'GET':
-        return render(request, 'signup.html', context)
+        return render(request, 'signup.html')
 
     elif request.method == 'POST':
         f = request.POST

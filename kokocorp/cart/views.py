@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, HttpResponse
 from catalogue.models.product import Product
 from .cart import Cart
 from django.contrib import messages
-# Create your views here.
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import get_template
+from django.conf import settings
+
 def cart(request):
     return render(request, 'cart.html')
 
@@ -29,6 +32,20 @@ def confirm(request):
     if request.user.is_authenticated:
        if cart.cart:
             messages.success(request, 'Pedido realizado exitosamente')
+            # ENVIO DE EMAIL
+            ## RENDERIZADO DE CORREO
+            context = {'cart' : cart.cart, 'total' : cart.total}
+            template = get_template('mail.html')
+            content = template.render(context)
+            email = EmailMultiAlternatives(
+                    'Recibo de compra',
+                    'Compra realizada',
+                    settings.EMAIL_HOST_USER,
+                    [request.user.email]
+                    )
+            email.attach_alternative(content, 'text/html')
+            email.send()
+
             cart.confirmOrder(request)
        else:
             messages.warning(request, 'Carrito vacio')
