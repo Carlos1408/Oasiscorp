@@ -10,7 +10,7 @@ class UserManager(BaseUserManager):
                 birth_date = birth_date,
                 phone = phone,
                 address = address,
-                email = email,
+                email = self.normalize_email(email),
                 )
         user.set_password(password)
         user.save()
